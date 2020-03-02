@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+</head>
+<body>
+	<h1>Register</h1>
+	<form>
+		<div>
+			<label for="firstName">First Name:</label>
+			<input id="firstName" type="text" name="firstName" placeholder="John" required>
+			<label for="lastName">Last Name:</label>
+			<input id="lastName" type="text" name="lastName" placeholder="Smith" required>	
+		</div>
+
+		<div>
+			<label for="male">Male</label>
+			<input id="male" type="radio" name="gender" value="male">
+			<label for="female">Female</label>
+			<input id="female" type="radio" name="gender" value="female">
+			<label for="other">Other</label>
+			<input id="other" type="radio" name="gender" value="other">
+		</div>
+
+		<div>
+			<label for="email">Email:</label>
+			<input id="email" type="email" name="email" placeholder="your email" required>
+			<label for="password">Password:</label>
+			<input id="password" type="password" name="password" placeholder="your password" pattern=".{5,10}" required title="Password must be between 5 to 10 characters">
+		</div>
+
+		<div>
+			<label>Birthday:
+				<select name="month">
+					<option value="">Month</option>
+					<option value="January">January</option>
+				</select>
+				<select name="day">
+					<option value="">Day</option>
+					<option value="5">5</option>
+				</select>
+				<select name="year">
+					<option value="">Year</option>
+					<option value="1997">1997</option>
+				</select>
+			</label>			
+		</div>
+		
+		<div>
+			<label for="authorization">I agree to the terms and conditions</label>	
+			<input id="authorization" type="checkbox" name="authorization" required>
+		</div>
+
+		<div>
+			<button>Submit</button>
+		</div>
+	</form>
+</body>
+</html>

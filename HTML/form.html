@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Demo</title>
+</head>
+<body>
+<h1>Login</h1>
+
+<!-- action - where the form send data to -->
+<!-- method - what HTTP method (get/post) -->
+
+<form action="http://www.wikipedia.org">
+	<input name="username" type="text" placeholder="username">
+	<input name="password" type="password" placeholder="password">
+	<input type="submit">
+</form>
+
+<h2>Label Tag</h2>
+<form action="http://www.google.com">
+	<label for="username">Username:</label>
+	<input id="username" name="username" type="text" placeholder="username">
+
+	<label for="password">Password:</label>
+	<input id="password" name="password" type="password" placeholder="password">
+
+	<input type="submit">
+</form>
+
+<h2>Validation</h2>
+<h3>Presence Validation</h3>
+<form action="http://www.google.com">
+	<label for="username">Username:</label>
+	<input id="username" name="username" type="text" placeholder="username" required>
+
+	<label for="password">Password:</label>
+	<input id="password" name="password" type="password" placeholder="password" required>
+
+	<input type="submit">
+</form>
+
+<h3>Data Type Validation</h3>
+<form action="http://www.google.com">
+	<label for="username">Username:</label>
+	<input id="username" name="username" type="email" placeholder="username">
+
+	<label for="password">Password:</label>
+	<input id="password" name="password" type="password" placeholder="password">
+
+	<input type="submit">
+</form>
+<!-- <input type="color"> -->
+<!-- <input type="radio"> -->
+
+</body>
+</html>

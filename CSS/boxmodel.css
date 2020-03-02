@@ -1,0 +1,39 @@
+#firstP{
+	text-align: center;
+
+	/*Centent - Width and Height*/
+	width: 50%;	/*It is 50% of the body. It changes with the window screen. *
+
+	/*Border*/
+	border: 2px solid blue; /*By defualt, this goes all the way to the screen*/
+
+	/*Padding*/
+	padding: 20px;
+
+	/*Margin*/
+	margin: 100px;
+}
+
+#secondP{
+	width: 50%;
+
+	border: 2px solid green;
+
+	padding-left: 40px;
+	padding-top: 20px;
+	padding-right: 5px;
+	padding-bottom: 10px;
+
+	margin: 20px 40px 200px 100px; /*Top Right Bottom Left*/
+}
+
+#thirdP{
+	width: 50%;
+
+	border: 2px solid red;
+
+	padding: 20px;
+
+	/*margin: 10px auto 10px auto;*/
+	margin: 10px auto;
+}

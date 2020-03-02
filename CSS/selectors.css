@@ -1,0 +1,49 @@
+/*https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048*/
+
+/*Element Selector*/
+li{
+
+}
+
+/*Class Selector*/
+.hello{
+
+}
+
+/*id Selector*/
+#special{
+
+}
+
+/*Star Selector*/
+/*This apply to every single element on the page*/
+*{
+	border: 1px solid lightgrey;
+}
+
+/*Descendant Selector*/
+/*This takes two or more tag names and you chain them together*/
+ul li a{
+	color: red;
+}
+
+/*Adjacent Selector*/
+/*This change the adjacent element after the current element*/
+/*In this case, only ul after a h4 element*/
+h4 + ul{
+	border: 4px solid red;
+}
+
+/*Attribute Selctor*/
+a[href="http://www.google.com"] {
+	background: blue;
+}
+
+/*nth of type*/
+ul:nth-of-type(3){
+	background: green;
+}
+
+li:nth-of-type(even){
+	background: yellow;
+}

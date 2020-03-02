@@ -1,0 +1,36 @@
+
+/*Hex color: First two digits are red, Second two are green, Last two are blue*/
+/*Red: #FF0000*/
+/*Green: #00FF00*/
+
+/*RGB color*/
+
+/*RGBA*/
+
+body{
+	background: grey;
+	/*background: url(https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+	background-repeat: no-repeat;
+	background-size: cover;*/
+}	
+
+h1{
+	color: #000000;
+	color: rgb(68,0,100);
+	color: rgba(11,99,150,1);
+	background: rgb(68,0,100);
+}
+
+h4{
+	color: #4B0082;
+	/*color: rgba(11,99,150,.6);*/
+	border-color: purple;
+	border-width: 5px;
+	border-style: solid;
+}
+
+li{
+	color: #FF1493;
+	border: 2px dashed rgba(11,99,150,.2);
+	/*color: rgba(11,99,150,.2);*/
+}

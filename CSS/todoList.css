@@ -1,0 +1,13 @@
+body{
+	background: orange; 
+}
+
+/*id can be used only once in a html*/
+#special{
+	background-color: green;
+}
+
+/*class can be used for multiple elements*/
+.completed{
+	text-decoration: line-through;
+}

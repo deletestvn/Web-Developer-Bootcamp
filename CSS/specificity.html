@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Specificity</title>
+	<style type="text/css">
+		
+		body{
+			color:red;
+		}
+
+		ul{
+			color:yellow;
+		}
+
+		li{
+			color:orange;
+		}
+
+		.highlight{
+			color:green;
+		}
+
+		#special{
+			color:pink;
+		}
+	</style>
+</head>
+<body>
+	<p><a href="https://specificity.keegan.st/">Specificity</a></p>
+	<p>We can have multiple styles targeting to the element, but only the closest one will be applied.</p>
+
+	<ul>
+		<li id="special" class="highlight">John</li>
+		<li>Paul</li>
+		<li>George</li>
+		<li class="highlight">Ringo</li>
+	</ul>
+</body>
+</html>
