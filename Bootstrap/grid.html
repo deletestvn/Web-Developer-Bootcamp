@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bootstrap Grid System</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	<style type="text/css">
+		.pink{
+			background: pink;
+			border: 1px solid black;
+		}
+		.orange{
+			background: orange;
+			border:1px solid white;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+	1. We have 12 units 
+	
+	-->
+	<div class="container">
+		<p>Large and Medium</p>
+		<div class="row">
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL LG 1</div>
+		</div>
+		<p>Only large</p>
+		<div class="row">
+			<div class="col-lg-6 pink">COL LG 6</div>
+			<div class="col-lg-6 pink">
+				<div class="row">
+					<div class="col-lg-6 orange">First Half</div>
+					<div class="col-lg-6 orange">Second Half</div>
+				</div>
+			</div>
+		</div>
+		<p>All set up</p>
+		<div class="row">
+			<!-- Dont need to specify lg when md has been set to 3 -->
+			<div class="col-md-3 col-sm-6 col-xs-12 pink">COL LG 3</div>
+			<div class="col-md-3 col-sm-6 col-xs-12 pink">COL LG 3</div>
+			<div class="col-md-3 col-sm-6 col-xs-12 pink">COL LG 3</div>
+			<div class="col-md-3 col-sm-6 col-xs-12 pink">COL LG 3</div>
+		</div>
+	</div>
+</body>
+</html>
