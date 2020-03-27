@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Game</title>
+	<link rel="stylesheet" type="text/css" href="colorGame.css">
+	<link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<h1>
+		The Great 
+		<br>
+		<span id="colorDisplay">RGB</span> 
+		<br>
+		Color Game
+	</h1>
+	<div id="stripe">
+		<button id="reset">Start Game</button>
+		<span id="message"></span>
+		<button id="easy">Easy</button>
+		<button id="hard" class="selectedMode">Hard</button>
+	</div>
+	<div id="squareContainer">
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square hardSquare"></div>
+		<div class="square hardSquare"></div>
+		<div class="square hardSquare"></div>
+	</div>
+</body>
+<script type="text/javascript" src="colorGame.js"></script>
+</html>
