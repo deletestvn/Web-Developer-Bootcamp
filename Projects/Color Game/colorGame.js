@@ -39,7 +39,7 @@ function resetGame(){
 	pickedColor = pickGoal(rgbColors);
 	reset.textContent = "New Colors";
 	message.textContent = "";
-	h1.style.backgroundColor = "#232323";
+	h1.style.backgroundColor = "steelblue";
 
 	console.log("Colors are: "+rgbColors);
 	console.log("Picked Color is: "+pickedColor);
@@ -84,6 +84,7 @@ function resetMode(isHardMode){
 reset.addEventListener("click", resetGame);
 easyButton.addEventListener("click", function(){resetMode(false);});
 hardButton.addEventListener("click", function(){resetMode(true);});
+
 
 for(var i = 0; i < squares.length; i++){
 	if(squares[i].style.display !== "none"){
