@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Events</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<style type="text/css">
+		.event{
+			width: 20%;
+		}
+	</style>
+</head>
+<body>
+	<h1>jQuery Events</h1>
+	<button class="event" id="click">click()</button>
+	<input class="event" id="keypress" type="text" placeholder="keypress()">
+	<button class="event" id="on">on()</button>
+	<br>
+	<p>IMPORTANT! click() and on("click") difference: click() only adds listeners for existing elements,
+	on() will add listeners for all potential future elements</p>
+</body>
+<script type="text/javascript" src="jqueryEvent.js"></script>
+</html>
