@@ -12,7 +12,7 @@ function deleteTodo(todo){
 function createTodo(todo){
 	var todoText = $(todo).val();
 	$(todo).val("");
-	$("ul").append("<li><span>X</span> "+todoText+"</li>");
+	$("ul").append("<li><span><i class='fas fa-trash-alt'></i></span> "+todoText+"</li>");
 }
 
 $("ul").on("click", "li", function(){markCompletion(this);});
