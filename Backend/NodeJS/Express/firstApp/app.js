@@ -17,6 +17,14 @@ app.get("/cat", function(req,res){
 	res.send("Meow!");
 });
 
+app.get("/dog/:dogName", function(req,res){
+	var dogName = req.params.dogName;
+	res.send("Welcome to " + dogName.toUpperCase() + "'s page using ");
+});
+
+app.get("*", function(req,res){
+	res.send("ERROR PAGE!");
+});
 // Tell Express to listen for requests
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
