@@ -1,0 +1,14 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" type="text/css" href="/public/app.css">
+<h1>The Experience Page</h1>
+<ul>
+	<% for(var i = 0; i < experiences.length; i++){ %>
+		<li><%= experiences[i].company %> - <strong><%= experiences[i].title %></strong></li>
+	<% } %>
+</ul>
+<ul>
+	<% experiences.forEach(function(experience){ %>
+		<li><%= experience.title %> - <strong><%= experience.company %></strong></li>
+	<% })%>
+</ul>
+<%- include("partials/footer") %>

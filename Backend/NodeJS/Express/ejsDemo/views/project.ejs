@@ -1,0 +1,12 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" type="text/css" href="/app.css">
+<h1>This is a project</h1>
+
+<% if(projectName.toLowerCase() === "pentago-swap"){ %>
+	<p>Pentago-Swap is a AI project.</p>
+<% } %>
+
+<p>P.S. this is the project.ejs file!</p>
+<p>Name of this project is: <%= projectName %></p>
+<p>Everything inside "&lt %=" and "%&gt" are trated as JS</p>
+<%- include("partials/footer") %>

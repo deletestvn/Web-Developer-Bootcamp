@@ -1,0 +1,12 @@
+<h1><%= gameName.toUpperCase() %></h1>
+<ul>
+	<% reviews.forEach(function(review){ %>
+		<li><%= review.rate %> - <%= review.comment %></li>
+	<% }); %>	
+</ul>
+
+<form action="/addReview" method="POST">
+	<input type="number" name="rate" placeholder="rate" min="0" max="10">
+	<input type="text" name="comment" placeholder="comment">
+	<button>Submit</button>
+</form>
