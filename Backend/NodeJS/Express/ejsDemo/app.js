@@ -1,7 +1,11 @@
-var app = require("express")();
+var express = require("express");
+var app = express();
+
+app.use(express.static("public"));
+app.set("view engine", "ejs");
 
 app.get("/", function(req, res){
-	res.render("home.ejs");
+	res.render("home");
 });
 
 app.get("/experience", function(req, res){
@@ -11,12 +15,12 @@ app.get("/experience", function(req, res){
 		{company: "Loho MTL", title: "Social Media Specialist"}
 	];
 
-	res.render("experience.ejs", {experiences: experiences});
+	res.render("experience", {experiences: experiences});
 });
 
 app.get("/projects/:name", function(req, res){
 	var projectName = req.params.name;
-	res.render("project.ejs", {projectName: projectName});
+	res.render("project", {projectName: projectName});
 });
 
 var port = process.env.PORT || 1000;
