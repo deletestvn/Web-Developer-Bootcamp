@@ -1,0 +1,9 @@
+<%- include("partials/header") %>
+<h1>Create New Island</h1>
+<form action="/islands" method="POST">
+	<input type="text" name="name" placeholder="Island Name">
+	<input type="text" name="owner" placeholder="Owner">
+	<input type="text" name="zone" placeholder="Time Zone">
+	<button>Submit</button>
+</form>
+<%- include("partials/footer") %>
