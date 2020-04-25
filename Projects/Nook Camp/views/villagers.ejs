@@ -1,6 +1,8 @@
+<%- include("partials/header") %>
 <h1>This is the villagers page!</h1>
 
 <% villagers.forEach(function(villager){ %>
 	<h4><%= villager.name %></h4>
 	<img src="<%= villager.image %>">
 <% }); %>
+<%- include("partials/footer") %>
