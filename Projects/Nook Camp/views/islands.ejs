@@ -1,0 +1,20 @@
+<%- include("partials/header") %>
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Welcome to NookCamp!</h1>
+			<p>Animal Crossing New Horizon Islands</p>	
+			<p>
+				<a class="btn btn-primary btn-lg" href="/islands/new">Add New Island</a>
+			</p>
+		</div>
+	</header>
+
+
+<ul>
+	<% islands.forEach(function(island){ %>
+	<li><%= island.name %> - <%= island.owner %> - <%= island.zone %></li>
+	<% }); %>
+</ul>
+</div>
+<%- include("partials/footer") %>
