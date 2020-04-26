@@ -1,9 +1,17 @@
 <%- include("partials/header") %>
-<h1>Create New Island</h1>
-<form action="/islands" method="POST">
-	<input type="text" name="name" placeholder="Island Name">
-	<input type="text" name="owner" placeholder="Owner">
-	<input type="text" name="zone" placeholder="Time Zone">
-	<button>Submit</button>
-</form>
+<div class="container">
+	<div class="row">
+		<h1 style="text-align: center;">Create New Island</h1>
+		<div style="width: 30%; margin: 20px auto;">
+			<form action="/islands" method="POST">
+				<input class="form-control" type="text" name="name" placeholder="Island Name">
+				<input class="form-control" type="text" name="owner" placeholder="Owner">
+				<input class="form-control" type="text" name="zone" placeholder="Time Zone">
+				<button class="btn btn-lg btn-defualt btn-block btn-primary">Submit</button>
+			</form>	
+			<a href="/islands">Back</a>
+		</div>
+	</div>
+</div>
+
 <%- include("partials/footer") %>

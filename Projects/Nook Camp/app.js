@@ -19,6 +19,8 @@ var villagers = [
 		{name: "Felicity", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/a/aa/Felicity.png?width=325"},
 		{name: "Kabuki", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/5/57/Kabuki.png?width=325"},
 		{name: "Katt", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/27/Katt_NewLeaf.png?width=325"}
+];
+
 	/*	{name: "Kid Cat", image: ""}
 		{name: "Kiki", image: ""}
 		{name: "kitty", image: ""}
@@ -36,8 +38,8 @@ var villagers = [
 		{name: "Stinky", image: ""}
 		{name: "Tabby", image: ""}
 		{name: "Tangy", image: ""}
-		{name: "Tom", image: ""}*/
-];
+		{name: "Tom", image: ""}
+	*/
 
 app.get("/", function(req, res){
 	res.render("index");
