@@ -11,10 +11,10 @@
 	</header>
 
 
-<ul>
-	<% islands.forEach(function(island){ %>
-	<li><%= island.name %> - <%= island.owner %> - <%= island.zone %></li>
-	<% }); %>
-</ul>
+	<ul>
+		<% islands.forEach(function(island){ %>
+		<li><a href="/islands/<%=island._id %>"><%= island.name %></a> - <%= island.owner %> - <%= island.zone %></li>
+		<% }); %>
+	</ul>
 </div>
 <%- include("partials/footer") %>

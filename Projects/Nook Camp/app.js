@@ -47,6 +47,17 @@ app.get("/islands/new", function(req, res){
 	res.render("newIsland");
 });
 
+app.get("/islands/:id", function(req, res){
+	// find the island with the provided id
+	Island.findById(req.params.id, function(err, island){
+		if(err) console.log(err);
+		else{
+			// render show template with that island
+			res.render("showIsland", {island: island});
+		}
+	});	
+});
+
 app.post("/islands", function(req, res){
 	// get data from form
 	var name = req.body.name;
