@@ -1,17 +1,24 @@
-var express = require("express");
-var ejs = require("ejs");
-var bodyParser = require("body-parser");
+var express 	= require("express"),
+ 	ejs 		= require("ejs"),
+ 	bodyParser 	= require("body-parser"),
+ 	mongoose 	= require("mongoose");
 
 var app = express();
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
-var islands = [
-		{name: "Verdun", owner: "ThiccGuy", zone: "EDT"},
-		{name: "utopia", owner: "huahua", zone: "EDT"},
-		{name: "mora mora", owner: "monmon", zone: "EDT"},
-		{name: "PurpleTaro", owner: "Mirrorsiri", zone: "EDT"}
-];
+
+mongoose.connect("mongodb://localhost:27017/islands",{ useNewUrlParser: true, useUnifiedTopology: true });
+
+// SCHEMA SETUP
+var islandSchema = new mongoose.Schema({
+	name: String,
+	owner: String,
+	zone: String
+});
+
+var Island = mongoose.model("Island", islandSchema);
 
 var villagers = [ 
 		{name: "Ankha", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/5/51/Ankha.png?width=325"},
@@ -20,26 +27,6 @@ var villagers = [
 		{name: "Kabuki", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/5/57/Kabuki.png?width=325"},
 		{name: "Katt", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/27/Katt_NewLeaf.png?width=325"}
 ];
-
-	/*	{name: "Kid Cat", image: ""}
-		{name: "Kiki", image: ""}
-		{name: "kitty", image: ""}
-		{name: "Lolly", image: ""}
-		{name: "Merry", image: ""}
-		{name: "Mitzi", image: ""}
-		{name: "Moe", image: ""}
-		{name: "Monique", image: ""}
-		{name: "Olivia", image: ""}
-		{name: "Punchy", image: ""}
-		{name: "Purrl", image: ""}
-		{name: "Raymond", image: ""}
-		{name: "Rosie", image: ""}
-		{name: "Rudy", image: ""}
-		{name: "Stinky", image: ""}
-		{name: "Tabby", image: ""}
-		{name: "Tangy", image: ""}
-		{name: "Tom", image: ""}
-	*/
 
 app.get("/", function(req, res){
 	res.render("index");
@@ -50,20 +37,42 @@ app.get("/villagers/", function(req, res){
 });
 
 app.get("/islands", function(req, res){
-	res.render("islands", {islands: islands});
+	Island.find({}, function(err, islands){
+		if(err) console.log(err);
+		else res.render("islands", {islands: islands});;
+	});	
 });
 
 app.get("/islands/new", function(req, res){
 	res.render("newIsland");
 });
 
+app.get("/islands/:id", function(req, res){
+	// find the island with the provided id
+	Island.findById(req.params.id, function(err, island){
+		if(err) console.log(err);
+		else{
+			// render show template with that island
+			res.render("showIsland", {island: island});
+		}
+	});	
+});
+
 app.post("/islands", function(req, res){
+	// get data from form
 	var name = req.body.name;
 	var owner = req.body.owner;
 	var zone = req.body.zone;
+	// create a new island and save to database	
 	var newIsland = {name: name, owner: owner, zone: zone};
-	islands.push(newIsland);
-	res.redirect("islands");
+	Island.create(newIsland, function(err, island){
+		if(err) console.log(err);
+		else{
+			console.log("NEW ISLAND CREATED");
+			console.log(island);
+			res.redirect("islands");
+		}
+	});	
 });
 
 var port = process.env.PORT || 3000;
