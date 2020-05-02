@@ -1,7 +1,8 @@
-var ejs			= require("ejs"),
-	express 	= require("express"),
-	mongoose 	= require("mongoose"),
-	bodyParser	= require("body-parser");
+var ejs				= require("ejs"),
+	express 		= require("express"),
+	mongoose 		= require("mongoose"),
+	bodyParser		= require("body-parser"),
+	methodOverride	= require("method-override");
 
 var app = express();
 
@@ -9,6 +10,7 @@ var app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 mongoose.connect("mongodb://localhost:27017/blogs",{ useNewUrlParser: true, useUnifiedTopology: true });
 
 // MONGOOSE/MODEL CONFIG
@@ -21,15 +23,6 @@ var blogSchema = new mongoose.Schema({
 
 var Blog = mongoose.model("Blog", blogSchema);
  
-// Blog.create(
-// 	{
-// 		title: "My first blog", 
-// 		body: "The default blog image is a picture I took in San Diego Zoo!"
-// 	}, function(err, blog){
-// 		if(err) console.log(err);
-// 		else console.log("New blog created!")
-// });
-
 // RESTFUL ROUTES
 app.get("/", function(req, res){
 	res.redirect("/blogs");
@@ -66,6 +59,22 @@ app.get("/blogs/:id", function(req, res){
 	Blog.findById(req.params.id, function(err, blog){
 		if(err) res.redirect("/blogs");
 		else res.render("show", {blog: blog});
+	});
+});
+
+// EDIT ROUTE
+app.get("/blogs/:id/edit", function(req, res){
+	Blog.findById(req.params.id, function(err, blog){
+		if(err) res.redirect("/blogs");
+		else res.render("edit", {blog: blog});
+	});
+});
+
+// UPDATE ROUTE
+app.put("/blogs/:id", function(req, res){
+	Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, blog){
+		if(err) res.redirect("/blogs");
+		else res.redirect("/blogs/"+req.params.id);
 	});
 });
 
