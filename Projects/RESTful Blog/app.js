@@ -14,7 +14,7 @@ mongoose.connect("mongodb://localhost:27017/blogs",{ useNewUrlParser: true, useU
 // MONGOOSE/MODEL CONFIG
 var blogSchema = new mongoose.Schema({
 	title: String,
-	image: {type: String, default: "/images/blog.jpg"},
+	image: {type: String, default: "http://localhost:3000/images/blog.jpg"},
 	body: String,
 	created: {type: Date, default: Date.now}
 });
@@ -58,6 +58,14 @@ app.post("/blogs", function(req, res){
 			console.log("New blog created!");
 			res.redirect("/blogs");	
 		} 
+	});
+});
+
+// SHOW ROUTE
+app.get("/blogs/:id", function(req, res){
+	Blog.findById(req.params.id, function(err, blog){
+		if(err) res.redirect("/blogs");
+		else res.render("show", {blog: blog});
 	});
 });
 

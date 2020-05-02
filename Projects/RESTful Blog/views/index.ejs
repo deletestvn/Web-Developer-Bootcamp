@@ -1,12 +1,25 @@
 <%- include("partials/header") %>
 <h1>INDEX PAGE!!!</h1>
-
-<% blogs.forEach(function(blog){ %>
-		<div>
-			<h2><%= blog.title %></h2>
-			<img style="max-width: 20%" src="<%= blog.image %>">
-			<span><%= blog.created %></span>
-			<p><%= blog.body %></p>
+<div class="ui cards">
+	<% blogs.forEach(function(blog){ %>
+		<div class="card">
+			<div class="image">
+				<img src="<%= blog.image %>">
+			</div>
+			<div class="content">
+				<a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+				<div class="meta">
+					<span class="date"><%= blog.created.toDateString() %></span>
+				</div>
+				<div class="description">
+					<p><%- blog.body.substring(0, 100) %>...</p>
+				</div>
+			</div>
+			<div class="extra content">
+				<a href="/blogs/<%= blog._id %>">Read More</a>
+			</div>
 		</div>
-<% }) %>
+	<% }) %>
+</div>
+
 <%- include("partials/footer") %>
