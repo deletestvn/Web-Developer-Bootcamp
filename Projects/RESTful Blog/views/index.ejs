@@ -1,0 +1,28 @@
+ <%- include("partials/header") %>
+<h1>Ma Blog</h1>
+<div class="ui cards">
+	<% blogs.forEach(function(blog){ %>
+		<div class="card">
+			<div class="image">
+				<img src="<%= blog.image %>">
+			</div>
+			<div class="content">
+				<a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+				<div class="meta">
+					<span class="date"><%= blog.created.toDateString() %></span>
+				</div>
+				<div class="description">
+					<p><%- blog.body.substring(0, 100) %>...</p>
+				</div>
+			</div>
+			<div class="extra content">
+				<span class="right floated">
+					<a href="/blogs/<%= blog._id %>/edit"><i class="edit icon"></i></a>
+				</span>
+				<a href="/blogs/<%= blog._id %>">Read More</a>
+			</div>
+		</div>
+	<% }) %>
+</div>
+
+<%- include("partials/footer") %>
