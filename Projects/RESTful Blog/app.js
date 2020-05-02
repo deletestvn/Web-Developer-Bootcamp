@@ -8,14 +8,13 @@ var app = express();
 // APP CONFIG
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.use("/images", express.static("images"));
 app.use(bodyParser.urlencoded({extended: true}));
 mongoose.connect("mongodb://localhost:27017/blogs",{ useNewUrlParser: true, useUnifiedTopology: true });
 
 // MONGOOSE/MODEL CONFIG
 var blogSchema = new mongoose.Schema({
 	title: String,
-	image: {type: String, default: "http://localhost:3000/images/blog.jpg"},
+	image: {type: String, default: "images/blog.jpg"},
 	body: String,
 	created: {type: Date, default: Date.now}
 });
