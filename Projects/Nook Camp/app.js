@@ -3,43 +3,51 @@ var express 	= require("express"),
  	bodyParser 	= require("body-parser"),
  	mongoose 	= require("mongoose");
 
-var app = express();
+var	Island 		= require("./models/island"),
+ 	Villager 	= require("./models/villager");
+
+var app 		= express();
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
 
 mongoose.connect("mongodb://localhost:27017/islands",{ useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27501/villagers",{ useNewUrlParser: true, useUnifiedTopology: true });
+
+// Villager.create(
+// 	{
+// 		name: "Katt", 
+// 		image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/27/Katt_NewLeaf.png?width=325"
+// 	}, function(err, villager){
+// 		if(err) console.log(err);
+// 		else console.log(villager);
+// });
 
 // SCHEMA SETUP
-var islandSchema = new mongoose.Schema({
-	name: String,
-	owner: String,
-	zone: String
-});
-
-var Island = mongoose.model("Island", islandSchema);
-
-var villagers = [ 
-		{name: "Ankha", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/5/51/Ankha.png?width=325"},
-		{name: "Bob", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/23/Bob_NewLeaf.png?width=325"},
-		{name: "Felicity", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/a/aa/Felicity.png?width=325"},
-		{name: "Kabuki", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/5/57/Kabuki.png?width=325"},
-		{name: "Katt", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/27/Katt_NewLeaf.png?width=325"}
-];
+// var villagers = [ 
+// 		{name: "Ankha", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/5/51/Ankha.png?width=325"},
+// 		{name: "Bob", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/23/Bob_NewLeaf.png?width=325"},
+// 		{name: "Felicity", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/a/aa/Felicity.png?width=325"},
+// 		{name: "Kabuki", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/5/57/Kabuki.png?width=325"},
+// 		{name: "Katt", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/27/Katt_NewLeaf.png?width=325"}
+// ];
 
 app.get("/", function(req, res){
 	res.render("index");
 });
 
-app.get("/villagers/", function(req, res){	
-	res.render("villagers", {villagers: villagers});
+app.get("/villagers/", function(req, res){
+	Villager.find({}, function(err, villagers){
+		if(err) console.log(err);
+		else res.render("villagers", {villagers: villagers});
+	});		
 });
 
 app.get("/islands", function(req, res){
 	Island.find({}, function(err, islands){
 		if(err) console.log(err);
-		else res.render("islands", {islands: islands});;
+		else res.render("islands", {islands: islands});
 	});	
 });
 
