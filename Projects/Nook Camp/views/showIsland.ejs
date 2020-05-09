@@ -8,4 +8,10 @@
 	</header>
 
 	<p><%= island.name %> - <%= island.owner %> - <%= island.zone %></p>
+
+	<% island.visitors.forEach(function(visitor){ %>
+		<p><%= visitor.name %> - <%= visitor.island %></p>
+	<% }) %>
 </div>
+
+<%- include("partials/footer") %>

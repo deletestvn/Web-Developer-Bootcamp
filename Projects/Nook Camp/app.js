@@ -4,34 +4,19 @@ var express 	= require("express"),
  	mongoose 	= require("mongoose");
 
 var	Island 		= require("./models/island"),
- 	Villager 	= require("./models/villager");
+ 	Villager 	= require("./models/villager"),
+ 	seedDb		= require("./seeds");
 
 var app 		= express();
+
+
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
 
 mongoose.connect("mongodb://localhost:27017/islands",{ useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect("mongodb://localhost:27501/villagers",{ useNewUrlParser: true, useUnifiedTopology: true });
-
-// Villager.create(
-// 	{
-// 		name: "Katt", 
-// 		image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/27/Katt_NewLeaf.png?width=325"
-// 	}, function(err, villager){
-// 		if(err) console.log(err);
-// 		else console.log(villager);
-// });
-
-// SCHEMA SETUP
-// var villagers = [ 
-// 		{name: "Ankha", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/5/51/Ankha.png?width=325"},
-// 		{name: "Bob", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/23/Bob_NewLeaf.png?width=325"},
-// 		{name: "Felicity", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/a/aa/Felicity.png?width=325"},
-// 		{name: "Kabuki", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/5/57/Kabuki.png?width=325"},
-// 		{name: "Katt", image: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/animal-crossing-new-horizons/2/27/Katt_NewLeaf.png?width=325"}
-// ];
+seedDb();
 
 app.get("/", function(req, res){
 	res.render("index");
@@ -57,9 +42,10 @@ app.get("/islands/new", function(req, res){
 
 app.get("/islands/:id", function(req, res){
 	// find the island with the provided id
-	Island.findById(req.params.id, function(err, island){
+	Island.findById(req.params.id).populate("visitors").exec(function(err, island){
 		if(err) console.log(err);
 		else{
+			console.log(island);
 			// render show template with that island
 			res.render("showIsland", {island: island});
 		}
